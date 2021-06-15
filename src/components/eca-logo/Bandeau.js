@@ -1,6 +1,6 @@
 import React from "react";
 import "./Bandeau.css";
-import logoescapade from "./escapadelogo.jpg";
+import logoescapade from "./escapadelogo.png";
 
 const Bandeau = () => {
     return(

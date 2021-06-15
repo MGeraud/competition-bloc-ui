@@ -1,7 +1,6 @@
 import './App.css';
 import Bandeau from "./components/eca-logo/Bandeau";
-import MainButton from "./components/main-buttons/MainButton";
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect , useHistory} from 'react-router-dom';
 import Welcome from "./pages/Welcome";
 import Juges from "./pages/Juges";
 import Inscriptions from "./pages/Inscriptions";
