@@ -1,7 +1,7 @@
 button{
     background-color: black;
     width: 30%;
-    margin: 2rem auto;
+    margin: 4rem auto;
     text-align: center;
     color: #F68C3E ;
     font-size: 2.5em;
@@ -14,9 +14,15 @@ button{
 button:hover{
     background-color: #F68C3E;
     color: black;
+    width: 35%;
 }
 
-.displayLinks {
-
-
+@media (max-width: 900px) {
+    button{
+        width: 60%;
+    }
+    button:hover{
+        width: 70%;
+    }
+    
 }

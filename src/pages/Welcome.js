@@ -4,6 +4,7 @@ import {Fragment} from "react";
 
 const Welcome = () => {
 
+    //utilisation de useHistory() de react-router-dom comme trick pour ne plus voir les liens soulignés dans les boutons
     const history = useHistory();
 
     const goToResults = (path) => {
