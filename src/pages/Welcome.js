@@ -13,10 +13,10 @@ const Welcome = () => {
 
     return (
         <Fragment className={classNames.displayLinks}>
-                <button onClick={() => {goToResults('/resultats')}} type='button'>Résultats</button>
-                <button onClick={() => {goToResults('/juges')}} type='button'>Juges</button>
-                <button onClick={() => {goToResults('/inscriptions')}} type='button'>Inscritpions</button>
-                <button onClick={() => {goToResults('/gestion')}} type='button'>Gestion</button>
+                <button className={classNames.button} onClick={() => {goToResults('/resultats')}} type='button'>Résultats</button>
+                <button className={classNames.button} onClick={() => {goToResults('/juges')}} type='button'>Juges</button>
+                <button className={classNames.button} onClick={() => {goToResults('/inscriptions')}} type='button'>Inscritpions</button>
+                <button className={classNames.button} onClick={() => {goToResults('/gestion')}} type='button'>Gestion</button>
         </Fragment>
     )
 }

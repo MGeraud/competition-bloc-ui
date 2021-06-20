@@ -1,3 +1,8 @@
+.buttonWrapper{
+    display: flex;
+    justify-content: center;
+}
+
 .button{
     background-color: black;
     width: 30%;
@@ -8,7 +13,9 @@
     padding: 5px;
     border-radius: 15px;
     transition-duration: 0.4s;
-    display: block;
+
+
+
 }
 
 .button:hover{
@@ -24,5 +31,5 @@
     .button:hover{
         width: 70%;
     }
-    
+
 }
