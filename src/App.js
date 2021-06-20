@@ -1,6 +1,6 @@
 import './App.css';
 import Bandeau from "./components/eca-logo/Bandeau";
-import {Route, Switch, Redirect , useHistory} from 'react-router-dom';
+import {Route, Switch, Redirect } from 'react-router-dom';
 import Welcome from "./pages/Welcome";
 import Juges from "./pages/Juges";
 import Inscriptions from "./pages/Inscriptions";
@@ -26,10 +26,10 @@ function App() {
                 <Route path='/inscriptions'>
                     <Inscriptions/>
                 </Route>
-                <Route path={'/gestion'}>
+                <Route path='/gestion'>
                     <Gestion/>
                 </Route>
-                <Route path={'/resultats'}>
+                <Route path='/resultats'>
                     <Resultats/>
                 </Route>
             </Switch>

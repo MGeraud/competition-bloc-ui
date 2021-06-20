@@ -1,4 +1,4 @@
-import {Link, useHistory} from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import classNames from './Welcome.module.css';
 import {Fragment} from "react";
 
