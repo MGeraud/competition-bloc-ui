@@ -1,11 +1,14 @@
 import './App.css';
+import React , {Suspense} from "react";
 import Bandeau from "./components/eca-logo/Bandeau";
 import {Route, Switch, Redirect } from 'react-router-dom';
 import Welcome from "./pages/Welcome";
-import Juges from "./pages/Juges";
-import Inscriptions from "./pages/Inscriptions";
-import Gestion from "./pages/Gestion";
-import Resultats from "./pages/Resultats";
+
+// utilisation de lazy loading pour les différentes pages
+const Juges = React.lazy( ()=> import("./pages/Juges"));
+const Inscriptions = React.lazy(()=> import("./pages/Inscriptions"));
+const Gestion = React.lazy(()=> import("./pages/Gestion"));
+const Resultats = React.lazy(()=> import("./pages/Resultats"));
 
 function App() {
     return (
@@ -13,6 +16,7 @@ function App() {
             <header>
                 <Bandeau/>
             </header>
+            <Suspense fallback={<p>Loading ...</p>}>
             <Switch>
                 <Route path='/' exact>
                     <Redirect to='Welcome'/>
@@ -33,6 +37,7 @@ function App() {
                     <Resultats/>
                 </Route>
             </Switch>
+            </Suspense>
         </>
     );
 }
