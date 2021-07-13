@@ -1,20 +1,31 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import axios from "axios";
+
+
+export const createCompetition = createAsyncThunk(
+    'competition/createCompetition',
+    async (competition) => {
+        const response = await axios.post('http://localhost:8081/competition/creation' , competition);
+        return response;
+    }
+
+)
 
 const competitionSlice =createSlice(
     {
         name: 'competition',
         initialState: {
-            competitionName: '',
-            year:'2021',
-            categories: []
+            competition: ''
         },
-        reducers:{
-            addCompetition(state,action){
+       extraReducers:{
+            [createCompetition.fulfilled]: (state , {payload}) =>{
+                state.competition = payload;
+                console.log(state.competition)
 
             }
-        }
+       }
     }
 );
 
-export const competitionAction = competitionSlice.actions;
+
 export default competitionSlice;
