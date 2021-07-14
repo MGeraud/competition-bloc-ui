@@ -3,6 +3,7 @@ import {Form, Field, Formik, ErrorMessage, FieldArray} from "formik";
 import * as Yup from 'yup';
 import {createCompetition} from "../../store/competitionSlice";
 import TextError from "./TextError";
+import axios from "axios";
 
 //valeur par défaut avant complétion du formulaire
 const  initalValues = {
@@ -20,6 +21,12 @@ const validationSchema=Yup.object({
             .required('Required'),
     })
 
+const axiosConfig = {
+    headers: {
+
+        'Content-Type': 'application/json',
+    }
+}
 
 const CompetitionCreationForm = () => {
 
@@ -28,11 +35,12 @@ const CompetitionCreationForm = () => {
         <Formik
             initialValues={initalValues}
             validationSchema={validationSchema}
-            // onSubmit={(values) => { dispatch(action du slice(values)) }}
-            onSubmit={(values, {setSubmitting}) => {
+            // envoi des données du formulaire vers l'api backend
+            onSubmit={async (values, {setSubmitting}) => {
+                await axios.post('http://localhost:8081/competition/creation' , values,axiosConfig)
 
                 setTimeout(() => {
-                    // dispatch(createCompetition(values));
+
                     alert(JSON.stringify(values, null, 2));
                     setSubmitting(false);
                 }, 400);
