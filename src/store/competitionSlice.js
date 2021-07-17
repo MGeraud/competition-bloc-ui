@@ -17,6 +17,7 @@ const competitionSlice =createSlice(
         initialState: {
             competition: ''
         },
+        reducers:{},
        extraReducers:{
             [createCompetition.fulfilled]: (state , {payload}) =>{
                 state.competition = payload;
@@ -28,4 +29,4 @@ const competitionSlice =createSlice(
 );
 
 
-export default competitionSlice;
+export default competitionSlice.reducer;
