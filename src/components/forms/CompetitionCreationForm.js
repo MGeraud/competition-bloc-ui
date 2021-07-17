@@ -1,7 +1,5 @@
-import {useDispatch} from 'react-redux';
 import {Form, Field, Formik, ErrorMessage, FieldArray, FormikContext} from "formik";
 import * as Yup from 'yup';
-import {createCompetition} from "../../store/competitionSlice";
 import TextError from "./TextError";
 import axios from "axios";
 import {useState} from "react";
