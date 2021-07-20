@@ -29,6 +29,8 @@ const AjoutBlocs = () => {
 
     const categories = useSelector(state => state.categorie.data)
     const loadingState = useSelector(state => state.categorie.loading)
+
+
     return (
         <>
             <h2>Insérer formulaire ajout blocs</h2>
@@ -37,9 +39,10 @@ const AjoutBlocs = () => {
             <ul>
                 {categories.map((categorie) => (
                     <li>{categorie.categoryName}
-                        <ul>{categorie.boulders.map((bloc)=>
+                        {categorie.boulders !== null &&
+                        <ul>{categorie.boulders.map((bloc) =>
                             <li>{bloc}</li>)}
-                        </ul>
+                        </ul>}
                     </li>
                 ))}
             </ul>}
@@ -68,9 +71,11 @@ const AjoutBlocs = () => {
                 {formik => {
                     return (
                         <Form>
+                            <div>{console.log(categories)}</div>
                             <div>
-                                <label htmlFor='id'></label>
+                                <label htmlFor='id'>Sélectionner la catégorie à laquelle ajouter les blocs</label>
                                 <Field as='select' id='id' name='id'>
+                                    <option>Selectionnez une categorie</option>
                                     {categories.map((categorie) => {
                                         return (
                                             <option key={categorie.id}
@@ -80,6 +85,7 @@ const AjoutBlocs = () => {
                                 </Field>
                                 <ErrorMessage name='id' component={TextError}/>
                             </div>
+
                             <div>
                                 <label>Liste de bloc à ajouter</label>
                                 {/*utilisation de FieldArray de formik pour créer directement un array de categories*/}
