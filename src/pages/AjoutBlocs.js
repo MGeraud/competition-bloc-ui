@@ -33,19 +33,26 @@ const AjoutBlocs = () => {
 
     return (
         <>
+
             <h2>Insérer formulaire ajout blocs</h2>
             {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
             {loadingState === 'fulfilled' &&
-            <ul>
-                {categories.map((categorie) => (
-                    <li>{categorie.categoryName}
-                        {categorie.boulders !== null &&
-                        <ul>{categorie.boulders.map((bloc) =>
-                            <li>{bloc}</li>)}
-                        </ul>}
-                    </li>
-                ))}
-            </ul>}
+            <div>
+                <ul>
+                    {categories.map((categorie) => (
+                        <li>{categorie.categoryName}
+                            {categorie.boulders !== null &&
+                            <ul>{categorie.boulders.map((bloc) =>
+                                <li>{bloc}</li>)}
+                            </ul>}
+                        </li>
+                    ))}
+                </ul>
+                <h2>
+                    test :
+                    {categories.map((cat) => (cat.categoryName === "Cadet Garcons" ? cat.id : null))}
+                </h2>
+            </div>}
 
             {loadingState === 'fulfilled' &&
             <Formik
@@ -71,7 +78,6 @@ const AjoutBlocs = () => {
                 {formik => {
                     return (
                         <Form>
-                            <div>{console.log(categories)}</div>
                             <div>
                                 <label htmlFor='id'>Sélectionner la catégorie à laquelle ajouter les blocs</label>
                                 <Field as='select' id='id' name='id'>
@@ -117,8 +123,6 @@ const AjoutBlocs = () => {
                 }}
 
             </Formik>}
-
-
         </>
     )
 }
