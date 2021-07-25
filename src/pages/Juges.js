@@ -105,7 +105,24 @@ const Juges = () => {
                                 </Field>
                                 <ErrorMessage name='categoryId' component={TextError}/>
                             </div>
-                            <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Envoyer</button>
+                            <div>
+                                <label htmlFor='boulderSuccess'>Sélectionner le competiteur</label>
+                                <Field as='select' id='boulderSuccess' name='boulderSuccess'>
+                                    <option>Selectionnez un bloc</option>
+                                    {/*regarde si 1er select rempli alors filtre les categorie pour récup les blocs de celle selectionnée*/}
+                                    {formik.values.categoryId !== "" && categories.filter(category => (
+                                        category.id === formik.values.categoryId))[0].boulders.map(bloc => {
+                                        return (<option key={bloc}
+                                                        value={bloc}>{bloc}</option>)
+                                    })}
+                                </Field>
+                                <ErrorMessage name='categoryId' component={TextError}/>
+                            </div>
+                            {/*bouton de reset du formulaire sansenvoi en cas d'echec du bloc*/}
+                            <button style={{color: "white", backgroundColor: "red"}} type={"reset"}>Echec</button>
+                            <button style={{color: "white", backgroundColor: "green"}} type='submit'
+                                    disabled={!formik.isValid || formik.isSubmitting}>Réussite
+                            </button>
                         </Form>
                     )
                 }}
