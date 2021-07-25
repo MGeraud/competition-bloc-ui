@@ -58,8 +58,17 @@ const Juges = () => {
                 // envoi des données du formulaire vers l'api backend
                 onSubmit={
                     async (values, onSubmitProps) => {
+                        // creation du result correspondant au format de lápi backend
+                        const splittedName = values.competitor.split("+");
 
-                        alert(JSON.stringify(values, null, 2))
+                        const result = {
+                            catId: values.categoryId,
+                            competitorFName: splittedName[0],
+                            competitorLName: splittedName[1],
+                            boulderDone: values.boulderSuccess
+                        }
+
+                        alert(JSON.stringify(result, null, 2))
 
                         // await axios.post('http://localhost:8081/categorie/inscription', values, axiosConfig)
                         //     .then(response => {
@@ -100,7 +109,7 @@ const Juges = () => {
                                     {formik.values.categoryId !== "" && categories.filter(category => (
                                         category.id === formik.values.categoryId))[0].competitors.map(comp => {
                                         return (<option key={comp.firstname}
-                                                        value={comp.firstname}>{comp.lastname} {comp.firstname}</option>)
+                                                        value={`${comp.firstname}+${comp.lastname}`}>{comp.lastname} {comp.firstname}</option>)
                                     })}
                                 </Field>
                                 <ErrorMessage name='categoryId' component={TextError}/>
