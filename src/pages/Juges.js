@@ -65,21 +65,20 @@ const Juges = () => {
                             catId: values.categoryId,
                             competitorFName: splittedName[0],
                             competitorLName: splittedName[1],
-                            boulderDone: values.boulderSuccess
+                            boulderDone: [values.boulderSuccess]
                         }
 
-                        alert(JSON.stringify(result, null, 2))
 
-                        // await axios.post('http://localhost:8081/categorie/inscription', values, axiosConfig)
-                        //     .then(response => {
-                        //         setSucces(true);
-                        //         setFailure(false);
-                        //     })
-                        //     .catch(e => {
-                        //         setFailure(true);
-                        //         setSucces(false);
-                        //     })
-                        //     .then(onSubmitProps.resetForm)
+                        await axios.post('http://localhost:8081/juges/validation', result, axiosConfig)
+                            .then(response => {
+                                setSucces(true);
+                                setFailure(false);
+                            })
+                            .catch(e => {
+                                setFailure(true);
+                                setSucces(false);
+                            })
+                            .then(onSubmitProps.resetForm)
 
                     }}
             >
