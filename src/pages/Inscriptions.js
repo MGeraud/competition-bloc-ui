@@ -4,6 +4,7 @@ import {fetchCategories} from "../store/categoriesSlice";
 import {ErrorMessage, Field, FieldArray, Form, Formik} from "formik";
 import axios from "axios";
 import TextError from "../components/forms/TextError";
+import keycloak from "../keycloak";
 
 const initialValues = {
     id: '',
@@ -15,12 +16,14 @@ const initialValues = {
     }],
 }
 
-
+//configuration des headers pour appel API avec passage de token pour autorisation
 const axiosConfig = {
     headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${keycloak.token}`
     }
 }
+
 const Inscriptions = () => {
     const [succes, setSucces] = useState();
     const [failure, setFailure] = useState();

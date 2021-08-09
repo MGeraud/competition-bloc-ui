@@ -5,6 +5,7 @@ import {ErrorMessage, Field, Form, Formik, useFormikContext} from "formik";
 import axios from "axios";
 import TextError from "../components/forms/TextError";
 import {useKeycloak} from "@react-keycloak/web";
+import keycloak from "../keycloak";
 
 const initialValues = {
     categoryId: '',
@@ -13,9 +14,11 @@ const initialValues = {
 }
 
 
+//configuration des headers pour appel API avec passage de token pour autorisation
 const axiosConfig = {
     headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${keycloak.token}`
     }
 }
 

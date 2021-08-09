@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import TextError from "./TextError";
 import axios from "axios";
 import {useState} from "react";
+import keycloak from "../../keycloak";
 
 //valeur par défaut avant complétion du formulaire
 const initalValues = {
@@ -21,11 +22,11 @@ const validationSchema = Yup.object({
         .required('Required'),
 })
 
-//configuration des headers pour appel API
+//configuration des headers pour appel API avec passage de token pour autorisation
 const axiosConfig = {
     headers: {
-
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${keycloak.token}`
     }
 }
 
