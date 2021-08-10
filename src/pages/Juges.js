@@ -30,9 +30,6 @@ const Juges = () => {
     const [failure, setFailure] = useState();
     const dispatch = useDispatch();
 
-
-    const [selectedCategorie, setSelectedCategorie] = useState(['']);
-
     useEffect(() => {
         dispatch(fetchCategories())
     }, [])
