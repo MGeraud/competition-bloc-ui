@@ -8,6 +8,7 @@ import keycloak from "../keycloak";
 import Card from "../components/UI/Card";
 import {useHistory} from "react-router-dom";
 import {useKeycloak} from "@react-keycloak/web";
+import classes from "../components/UI/Card.module.css";
 
 const initialValues = {
     id: '',
@@ -55,17 +56,6 @@ const Inscriptions = () => {
                 <Card>
                     <h2>Inscriptions</h2>
                     {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
-                    {loadingState === 'fulfilled' &&
-                    <ul>
-                        {categories.map((categorie) => (
-                            <li>{categorie.categoryName}
-                                {categorie.competitors !== null &&
-                                <ul>{categorie.competitors.map((competitor) =>
-                                    <li>{competitor.firstname} {competitor.lastname}</li>)}
-                                </ul>}
-                            </li>
-                        ))}
-                    </ul>}
 
                     {loadingState === 'fulfilled' &&
                     <Formik
@@ -95,7 +85,7 @@ const Inscriptions = () => {
                                     <div>
                                         <label htmlFor='id'>Sélectionner la catégorie à laquelle ajouter un
                                             competiteur</label>
-                                        <Field as='select' id='id' name='id'>
+                                        <Field className={classes.field} as='select' id='id' name='id'>
                                             <option>Selectionnez une categorie</option>
                                             {categories.map((categorie) => {
                                                 return (
@@ -109,18 +99,18 @@ const Inscriptions = () => {
 
                                     <div>
                                         <label htmlFor="competitors[0].lastname">nom</label>
-                                        <Field type='text' id="competitors[0].lastname" name="competitors[0].lastname"/>
+                                        <Field className={classes.field} type='text' id="competitors[0].lastname" name="competitors[0].lastname"/>
                                         <ErrorMessage name='competitors[0].lastname' component={TextError}/>
                                     </div>
                                     <div>
                                         <label htmlFor="competitors[0].firstname">prénom</label>
-                                        <Field type='text' id="competitors[0].firstname"
+                                        <Field className={classes.field} type='text' id="competitors[0].firstname"
                                                name="competitors[0].firstname"/>
                                         <ErrorMessage name='competitors[0].firstname' component={TextError}/>
                                     </div>
                                     <div>
                                         <label htmlFor="competitors[0].club">club</label>
-                                        <Field type='text' id="competitors[0].club" name="competitors[0].club"/>
+                                        <Field className={classes.field} type='text' id="competitors[0].club" name="competitors[0].club"/>
                                         <ErrorMessage name='competitors[0].club' component={TextError}/>
                                     </div>
                                     <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Envoyer

@@ -11,3 +11,9 @@ label{
     color: black;
     padding: 1rem;
 }
+
+.field{
+    margin-bottom: 1rem;
+    border-color: #F68C3E;
+    border-radius: 14px;
+}

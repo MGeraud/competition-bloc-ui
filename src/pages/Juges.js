@@ -8,6 +8,7 @@ import {useKeycloak} from "@react-keycloak/web";
 import keycloak from "../keycloak";
 import Card from "../components/UI/Card";
 import {useHistory} from "react-router-dom";
+import classes from "../components/UI/Card.module.css";
 
 const initialValues = {
     categoryId: '',
@@ -57,17 +58,6 @@ const Juges = () => {
             <Card>
                 <h2>Juges</h2>
                 {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
-                {loadingState === 'fulfilled' &&
-                <ul>
-                    {categories.map((categorie) => (
-                        <li>{categorie.categoryName}
-                            {categorie.competitors !== null &&
-                            <ul>{categorie.competitors.map((competitor) =>
-                                <li>{competitor.firstname} {competitor.lastname}</li>)}
-                            </ul>}
-                        </li>
-                    ))}
-                </ul>}
 
                 {loadingState === 'fulfilled' &&
                 <Formik
@@ -106,7 +96,7 @@ const Juges = () => {
 
                                 <div>
                                     <label htmlFor='categoryId'>Sélectionner la catégorie du competiteur</label>
-                                    <Field as='select' id='categoryId' name='categoryId'>
+                                    <Field className={classes.field} as='select' id='categoryId' name='categoryId'>
                                         <option>Selectionnez une categorie</option>
                                         {categories.map((categorie) => {
                                             return (
@@ -120,7 +110,7 @@ const Juges = () => {
 
                                 <div>
                                     <label htmlFor='competitor'>Sélectionner le competiteur</label>
-                                    <Field as='select' id='competitor' name='competitor'>
+                                    <Field className={classes.field} as='select' id='competitor' name='competitor'>
                                         <option>Selectionnez un competiteur</option>
                                         {/*regarde si 1er select rempli alors filtre les categorie pour récup les competiteurs de celle selectionnée*/}
                                         {formik.values.categoryId !== "" && categories.filter(category => (
@@ -133,7 +123,7 @@ const Juges = () => {
                                 </div>
                                 <div>
                                     <label htmlFor='boulderSuccess'>Sélectionner le competiteur</label>
-                                    <Field as='select' id='boulderSuccess' name='boulderSuccess'>
+                                    <Field className={classes.field} as='select' id='boulderSuccess' name='boulderSuccess'>
                                         <option>Selectionnez un bloc</option>
                                         {/*regarde si 1er select rempli alors filtre les categorie pour récup les blocs de celle selectionnée*/}
                                         {formik.values.categoryId !== "" && categories.filter(category => (

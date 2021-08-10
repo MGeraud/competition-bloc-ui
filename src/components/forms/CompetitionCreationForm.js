@@ -4,6 +4,7 @@ import TextError from "./TextError";
 import axios from "axios";
 import {useState} from "react";
 import keycloak from "../../keycloak";
+import classes from '../UI/Card.module.css'
 
 //valeur par défaut avant complétion du formulaire
 const initalValues = {
@@ -64,19 +65,19 @@ const CompetitionCreationForm = () => {
                         <Form>
                             <div>
                                 <label htmlFor="competitionName">Nom de la compétition</label>
-                                <Field type='text' id="competitionName" name="competitionName"/>
+                                <Field className={classes.field} type='text' id="competitionName" name="competitionName"/>
                                 <ErrorMessage name='competitionName' component={TextError}/>
                             </div>
 
                             <div>
                                 <label htmlFor="year">Année </label>
-                                <Field type='text' id="year" name="year"/>
+                                <Field className={classes.field} type='text' id="year" name="year"/>
                                 <ErrorMessage name='year' component={TextError}/>
                             </div>
                             <div>
                                 <label>Liste de catégories</label>
                                 {/*utilisation de FieldArray de formik pour créer directement un array de categories*/}
-                                <FieldArray name='categories'>
+                                <FieldArray  name='categories'>
                                     {fieldArrayProps => {
                                         const {push, remove, form} = fieldArrayProps;
                                         const {values} = form;
@@ -85,7 +86,7 @@ const CompetitionCreationForm = () => {
                                             <div>
                                                 {categories.map((category, index) => (
                                                     <div key={index}>
-                                                        <Field name={`categories[${index}]`}/>
+                                                        <Field className={classes.field} name={`categories[${index}]`}/>
                                                         {index > 0 && (
                                                             <button type='button'
                                                                     onClick={() => remove(index)}>-</button>
