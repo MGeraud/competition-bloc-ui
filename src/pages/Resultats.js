@@ -1,6 +1,10 @@
+import Card from "../components/UI/Card";
+
 const Resultats = () => {
-    return(
-        <h1>Page resultats</h1>
+    return (
+        <Card>
+            <h1>Page resultats</h1>
+        </Card>
     )
 }
 

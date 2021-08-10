@@ -6,6 +6,7 @@ import {ErrorMessage, Field, FieldArray, Form, Formik} from "formik";
 import * as Yup from "yup";
 import TextError from "../components/forms/TextError";
 import keycloak from "../keycloak";
+import Card from "../components/UI/Card";
 
 
 const initialValues = {
@@ -35,7 +36,7 @@ const AjoutBlocs = () => {
 
 
     return (
-        <>
+        <Card>
 
             <h2>Insérer formulaire ajout blocs</h2>
             {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
@@ -126,7 +127,7 @@ const AjoutBlocs = () => {
                 }}
 
             </Formik>}
-        </>
+        </Card>
     )
 }
 

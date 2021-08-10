@@ -6,6 +6,7 @@ import axios from "axios";
 import TextError from "../components/forms/TextError";
 import {useKeycloak} from "@react-keycloak/web";
 import keycloak from "../keycloak";
+import Card from "../components/UI/Card";
 
 const initialValues = {
     categoryId: '',
@@ -45,7 +46,7 @@ const Juges = () => {
     }
     if(keycloak.authenticated) {
         return (
-            <>
+            <Card>
                 <h2>Juges</h2>
                 {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
                 {loadingState === 'fulfilled' &&
@@ -146,7 +147,7 @@ const Juges = () => {
 
                 </Formik>}
                 <button onClick={handleLogout}>Se déconnecter</button>
-            </>
+            </Card>
         )
     }else {
         return (

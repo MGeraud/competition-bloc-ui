@@ -5,6 +5,7 @@ import {ErrorMessage, Field, FieldArray, Form, Formik} from "formik";
 import axios from "axios";
 import TextError from "../components/forms/TextError";
 import keycloak from "../keycloak";
+import Card from "../components/UI/Card";
 
 const initialValues = {
     id: '',
@@ -38,7 +39,7 @@ const Inscriptions = () => {
 
 
     return (
-        <>
+        <Card>
             <h2>Inscriptions</h2>
             {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
             {loadingState === 'fulfilled' &&
@@ -115,7 +116,7 @@ const Inscriptions = () => {
             </Formik>}
 
 
-        </>
+        </Card>
     )
 }
 
