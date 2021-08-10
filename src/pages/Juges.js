@@ -7,6 +7,7 @@ import TextError from "../components/forms/TextError";
 import {useKeycloak} from "@react-keycloak/web";
 import keycloak from "../keycloak";
 import Card from "../components/UI/Card";
+import {useHistory} from "react-router-dom";
 
 const initialValues = {
     categoryId: '',
@@ -35,6 +36,12 @@ const Juges = () => {
         dispatch(fetchCategories())
     }, [])
 
+    //utilisation de useHistory() de react-router-dom comme trick pour ne plus voir les liens soulignés dans les boutons
+    const history = useHistory();
+
+    const goToResults = (path) => {
+        history.push(path);
+    }
 
     const categories = useSelector(state => state.categorie.data)
     const loadingState = useSelector(state => state.categorie.loading)
@@ -46,6 +53,7 @@ const Juges = () => {
     }
     if(keycloak.authenticated) {
         return (
+            <>
             <Card>
                 <h2>Juges</h2>
                 {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
@@ -148,6 +156,11 @@ const Juges = () => {
                 </Formik>}
                 <button onClick={handleLogout}>Se déconnecter</button>
             </Card>
+                <footer>
+                    <button onClick={handleLogout}>Se déconnecter</button>
+                    <button onClick={() => {goToResults('/welcome')}} type='button'>Accueil</button>
+                </footer>
+            </>
         )
     }else {
         return (

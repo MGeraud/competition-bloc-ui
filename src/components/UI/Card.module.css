@@ -6,3 +6,8 @@
     border-radius: 14px;
     background-color: white;
 }
+
+label{
+    color: black;
+    padding: 1rem;
+}

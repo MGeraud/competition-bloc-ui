@@ -63,13 +63,13 @@ const CompetitionCreationForm = () => {
                     return (
                         <Form>
                             <div>
-                                <label htmlFor="competitionName">competitionName</label>
+                                <label htmlFor="competitionName">Nom de la compétition</label>
                                 <Field type='text' id="competitionName" name="competitionName"/>
                                 <ErrorMessage name='competitionName' component={TextError}/>
                             </div>
 
                             <div>
-                                <label htmlFor="year">competitionName</label>
+                                <label htmlFor="year">Année </label>
                                 <Field type='text' id="year" name="year"/>
                                 <ErrorMessage name='year' component={TextError}/>
                             </div>

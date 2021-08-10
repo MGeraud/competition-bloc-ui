@@ -21,7 +21,7 @@ const Gestion = () => {
         return (
             <>
                 <h1>Page gestion</h1>
-                <button onClick={handleLogout}>Se déconnecter</button>
+
                 <div className={classNames.buttonWrapper}>
                     <button className={classNames.button} onClick={() => {
                         goToResults('/gestion/creation')
@@ -40,6 +40,10 @@ const Gestion = () => {
                         <AjoutBlocs/>
                     </Route>
                 </Switch>
+                <footer>
+                    <button onClick={handleLogout}>Se déconnecter</button>
+                    <button onClick={() => {goToResults('/welcome')}} type='button'>Accueil</button>
+                </footer>
             </>
         )
     }else if (keycloak.authenticated && !keycloak.hasRealmRole('gestion')){
