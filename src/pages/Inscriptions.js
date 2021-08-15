@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCategories} from "../store/categoriesSlice";
-import {ErrorMessage, Field, FieldArray, Form, Formik} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
 import axios from "axios";
 import TextError from "../components/forms/TextError";
 import keycloak from "../keycloak";
@@ -47,6 +47,8 @@ const Inscriptions = () => {
         return (
             <>
                 <Card>
+                    {succes && <h2 style={{color: 'green'}}>Enregistré</h2>}
+                    {failure && <h2 style={{color: 'red'}}>Une erreur a eu lieu, veuillez essayer à nouveau</h2>}
                     <h2>Inscriptions</h2>
                     {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
 
@@ -92,7 +94,8 @@ const Inscriptions = () => {
 
                                     <div>
                                         <label htmlFor="competitors[0].lastname">nom</label>
-                                        <Field className={classes.field} type='text' id="competitors[0].lastname" name="competitors[0].lastname"/>
+                                        <Field className={classes.field} type='text' id="competitors[0].lastname"
+                                               name="competitors[0].lastname"/>
                                         <ErrorMessage name='competitors[0].lastname' component={TextError}/>
                                     </div>
                                     <div>
@@ -103,10 +106,12 @@ const Inscriptions = () => {
                                     </div>
                                     <div>
                                         <label htmlFor="competitors[0].club">club</label>
-                                        <Field className={classes.field} type='text' id="competitors[0].club" name="competitors[0].club"/>
+                                        <Field className={classes.field} type='text' id="competitors[0].club"
+                                               name="competitors[0].club"/>
                                         <ErrorMessage name='competitors[0].club' component={TextError}/>
                                     </div>
-                                    <button style={{width: 300 , height: 50}} className={classes.field} type='submit' disabled={!formik.isValid || formik.isSubmitting}>Envoyer
+                                    <button style={{width: 300, height: 50}} className={classes.field} type='submit'
+                                            disabled={!formik.isValid || formik.isSubmitting}>Envoyer
                                     </button>
                                 </Form>
                             )

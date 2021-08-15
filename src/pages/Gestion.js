@@ -14,9 +14,6 @@ const Gestion = () => {
         history.push(path);
     }
     const {keycloak} = useKeycloak();
-    const handleLogout = () => {
-        keycloak.logout({redirectUri: 'http://localhost:3000'});
-    }
 
     if (keycloak.authenticated && keycloak.hasRealmRole('gestion')) {
         return (

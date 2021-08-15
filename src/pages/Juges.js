@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCategories} from "../store/categoriesSlice";
-import {ErrorMessage, Field, Form, Formik, useFormikContext} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
 import axios from "axios";
 import TextError from "../components/forms/TextError";
 import {useKeycloak} from "@react-keycloak/web";
@@ -27,8 +27,7 @@ const axiosConfig = {
 }
 
 const Juges = () => {
-    const [succes, setSucces] = useState();
-    const [failure, setFailure] = useState();
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -67,13 +66,9 @@ const Juges = () => {
 
 
                                 await axios.post('http://localhost:8081/juges/validation', result, axiosConfig)
-                                    .then(response => {
-                                        setSucces(true);
-                                        setFailure(false);
-                                    })
                                     .catch(e => {
-                                        setFailure(true);
-                                        setSucces(false);
+                                        console.log(e)
+                                        alert("Echec de l'envoi")
                                     })
                                     .then(onSubmitProps.resetForm)
 
@@ -84,7 +79,7 @@ const Juges = () => {
                                 <Form>
 
                                     <div className={box.box}>
-                                        <label htmlFor='categoryId'>Sélectionner la catégorie du competiteur</label>
+                                        <label htmlFor='categoryId'>Sélectionner la catégorie </label>
                                         <Field className={classes.field} as='select'
                                                id='categoryId' name='categoryId'>
                                             <option>Selectionnez une categorie</option>

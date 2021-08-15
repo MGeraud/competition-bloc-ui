@@ -13,7 +13,7 @@ const Resultats = React.lazy(() => import("./pages/Resultats"));
 
 function App() {
     //initialisation de keycloak
-    const {keycloak, initialized} = useKeycloak();
+    const {initialized} = useKeycloak();
     if (!initialized) {
         return <h2> Loading ... </h2>
     }

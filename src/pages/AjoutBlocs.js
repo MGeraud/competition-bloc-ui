@@ -38,7 +38,8 @@ const AjoutBlocs = () => {
 
     return (
         <Card>
-
+            {succes && <h2 style={{color: 'green'}}>Enregistré</h2>}
+            {failure && <h2 style={{color: 'red'}}>Une erreur a eu lieu, veuillez essayer à nouveau</h2>}
             <h2>Formulaire d'ajout de blocs</h2>
 
             {loadingState === 'fulfilled' &&
