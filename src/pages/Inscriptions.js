@@ -16,7 +16,7 @@ const initialValues = {
         firstname: '',
         lastname: '',
         club: '',
-        boulderSuccess: ['']
+        boulderSuccess: [null]
     }],
 }
 

@@ -14,7 +14,7 @@ import Footer from "../components/UI/Footer";
 const initialValues = {
     categoryId: '',
     competitor: '',
-    boulderSuccess: '',
+    boulderSuccess: null,
 }
 
 

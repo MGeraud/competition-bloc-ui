@@ -12,7 +12,7 @@ import grid from '../components/forms/CompetitionCreationForm.module.css'
 
 const initialValues = {
     id: '',
-    boulders: [''],
+    boulders: [null],
 }
 
 
