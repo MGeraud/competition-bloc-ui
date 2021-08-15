@@ -1,0 +1,31 @@
+.container {
+    display: grid;
+    grid-template-columns: 25% 25% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "label1 . categories"
+        "label2 . categories"
+        ". . categories"
+        ". . submit"
+}
+
+.label1 {
+    grid-area: label1;
+}
+
+.label2 {
+    grid-area: label2;
+}
+
+.categories {
+    grid-area: categories;
+}
+
+.submit {
+    grid-area: submit;
+    height: 3rem;
+    width: 50%;
+    margin-bottom: 1rem;
+    border-color: #F68C3E;
+    border-radius: 14px;
+}

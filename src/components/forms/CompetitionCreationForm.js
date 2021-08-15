@@ -5,6 +5,7 @@ import axios from "axios";
 import {useState} from "react";
 import keycloak from "../../keycloak";
 import classes from '../UI/Card.module.css'
+import grid from './CompetitionCreationForm.module.css'
 
 //valeur par défaut avant complétion du formulaire
 const initalValues = {
@@ -37,8 +38,8 @@ const CompetitionCreationForm = () => {
 
     // const dispatch = useDispatch();
     return (<>
-            {succes && <h2 style={{ color: 'green' }}>Enregistré</h2>}
-            {failure && <h2 style={{ color: 'red' }}>Une erreur a eu lieu, veuillez essayer à nouveau</h2>}
+            {succes && <h2 style={{color: 'green'}}>Enregistré</h2>}
+            {failure && <h2 style={{color: 'red'}}>Une erreur a eu lieu, veuillez essayer à nouveau</h2>}
 
             <Formik
                 initialValues={initalValues}
@@ -62,22 +63,23 @@ const CompetitionCreationForm = () => {
             >
                 {formik => {
                     return (
-                        <Form>
-                            <div>
+                        <Form className={grid.container}>
+                            <div className={grid.label1}>
                                 <label htmlFor="competitionName">Nom de la compétition</label>
-                                <Field className={classes.field} type='text' id="competitionName" name="competitionName"/>
+                                <Field className={classes.field} type='text' id="competitionName"
+                                       name="competitionName"/>
                                 <ErrorMessage name='competitionName' component={TextError}/>
                             </div>
 
-                            <div>
+                            <div className={grid.label2}>
                                 <label htmlFor="year">Année </label>
                                 <Field className={classes.field} type='text' id="year" name="year"/>
                                 <ErrorMessage name='year' component={TextError}/>
                             </div>
-                            <div>
+                            <div className={grid.categories}>
                                 <label>Liste de catégories</label>
                                 {/*utilisation de FieldArray de formik pour créer directement un array de categories*/}
-                                <FieldArray  name='categories'>
+                                <FieldArray name='categories'>
                                     {fieldArrayProps => {
                                         const {push, remove, form} = fieldArrayProps;
                                         const {values} = form;
@@ -99,7 +101,9 @@ const CompetitionCreationForm = () => {
                                     }}
                                 </FieldArray>
                             </div>
-                            <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Envoyer</button>
+                            <button className={grid.submit} type='submit'
+                                    disabled={!formik.isValid || formik.isSubmitting}>Envoyer
+                            </button>
                         </Form>
                     )
                 }}

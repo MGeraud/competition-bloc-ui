@@ -15,14 +15,12 @@ const Gestion = () => {
     }
     const {keycloak} = useKeycloak();
     const handleLogout = () => {
-        keycloak.logout({ redirectUri: 'http://localhost:3000' });
+        keycloak.logout({redirectUri: 'http://localhost:3000'});
     }
 
-    if(keycloak.authenticated && keycloak.hasRealmRole('gestion') ) {
+    if (keycloak.authenticated && keycloak.hasRealmRole('gestion')) {
         return (
             <>
-                <h1>Page gestion</h1>
-
                 <div className={classNames.buttonWrapper}>
                     <button className={classNames.button} onClick={() => {
                         goToResults('/gestion/creation')
@@ -44,7 +42,7 @@ const Gestion = () => {
                 <Footer/>
             </>
         )
-    }else if (keycloak.authenticated && !keycloak.hasRealmRole('gestion')){
+    } else if (keycloak.authenticated && !keycloak.hasRealmRole('gestion')) {
         return (
             <>
                 {keycloak.logout()}
