@@ -106,7 +106,7 @@ const Inscriptions = () => {
                                         <Field className={classes.field} type='text' id="competitors[0].club" name="competitors[0].club"/>
                                         <ErrorMessage name='competitors[0].club' component={TextError}/>
                                     </div>
-                                    <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Envoyer
+                                    <button style={{width: 300 , height: 50}} className={classes.field} type='submit' disabled={!formik.isValid || formik.isSubmitting}>Envoyer
                                     </button>
                                 </Form>
                             )
