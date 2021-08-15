@@ -18,3 +18,10 @@ label{
     border-color: #F68C3E;
     border-radius: 14px;
 }
+
+.miniButton{
+    font-weight: bolder;
+    margin-left: 1rem;
+    border-color: #F68C3E;
+    border-radius: 14px;
+}

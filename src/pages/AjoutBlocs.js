@@ -95,10 +95,10 @@ const AjoutBlocs = () => {
                                                     <div key={index}>
                                                         <Field className={classes.field} name={`boulders[${index}]`}/>
                                                         {index > 0 && (
-                                                            <button type='button'
+                                                            <button className={classes.miniButton} type='button'
                                                                     onClick={() => remove(index)}>-</button>
                                                         )}
-                                                        <button type='button' onClick={() => push('')}>+</button>
+                                                        <button className={classes.miniButton} type='button' onClick={() => push('')}>+</button>
                                                     </div>
                                                 ))}
                                             </div>
