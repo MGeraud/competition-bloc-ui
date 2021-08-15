@@ -6,9 +6,9 @@ import axios from "axios";
 import TextError from "../components/forms/TextError";
 import keycloak from "../keycloak";
 import Card from "../components/UI/Card";
-import {useHistory} from "react-router-dom";
 import {useKeycloak} from "@react-keycloak/web";
 import classes from "../components/UI/Card.module.css";
+import Footer from "../components/UI/Footer";
 
 const initialValues = {
     id: '',
@@ -37,16 +37,9 @@ const Inscriptions = () => {
         dispatch(fetchCategories())
     }, [])
 
-    //utilisation de useHistory() de react-router-dom comme trick pour ne plus voir les liens soulignés dans les boutons
-    const history = useHistory();
 
-    const goToResults = (path) => {
-        history.push(path);
-    }
     const {keycloak} = useKeycloak();
-    const handleLogout = () => {
-        keycloak.logout({ redirectUri: 'http://localhost:3000' });
-    }
+
     const categories = useSelector(state => state.categorie.data)
     const loadingState = useSelector(state => state.categorie.loading)
 
@@ -123,13 +116,7 @@ const Inscriptions = () => {
 
 
                 </Card>
-                <footer>
-                    <button onClick={handleLogout}>Se déconnecter</button>
-                    <button onClick={() => {
-                        goToResults('/welcome')
-                    }} type='button'>Accueil
-                    </button>
-                </footer>
+                <Footer/>
             </>
         )
 

@@ -3,6 +3,7 @@ import CreationCompetition from "./CreationCompetition";
 import AjoutBlocs from "./AjoutBlocs";
 import classNames from './Gestion.module.css';
 import {useKeycloak} from "@react-keycloak/web";
+import Footer from "../components/UI/Footer";
 
 const Gestion = () => {
 
@@ -40,10 +41,7 @@ const Gestion = () => {
                         <AjoutBlocs/>
                     </Route>
                 </Switch>
-                <footer>
-                    <button onClick={handleLogout}>Se déconnecter</button>
-                    <button onClick={() => {goToResults('/welcome')}} type='button'>Accueil</button>
-                </footer>
+                <Footer/>
             </>
         )
     }else if (keycloak.authenticated && !keycloak.hasRealmRole('gestion')){
