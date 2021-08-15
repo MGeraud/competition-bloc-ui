@@ -23,8 +23,8 @@
 
 .submit {
     grid-area: submit;
-    height: 3rem;
-    width: 50%;
+    height: 2rem;
+    width: 30%;
     margin-bottom: 1rem;
     border-color: #F68C3E;
     border-radius: 14px;
