@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Application frontend du système de gestion des compétitions de blocs de l'association Escapade Club Albi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cette application est réservée en l'état à l'utilisation par le club d'escalade Escapade Club Albi. Son utilisation est néanmoins autorisée pour des usages non commerciaux à condition de retirer le nom et logo de l'association.
 
-## Available Scripts
+Elle fait partie du système pour lequel vous trouverez le détail [dans ce repo](https://github.com/MGeraud/CompetitionBloc)
 
-In the project directory, you can run:
+Son utilisation est la suivante :  
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##Page d'accueil : 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Accueil](page-accueil.png)
 
-### `npm test`
+Les liens Gestion et Inscription demandent une authentification réservée aux gestionnaires de l'application. 
+Le lien Juges demande une authentification réservée aux juges
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+##Page de Gestion des compétitions (Création de la compétition, de ses catégories et ajout des blocs pour chaque catégorie) :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Page gestion création de compétition](creation.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Pour l'onglet "Création Compétition" vous devez rentrer le nom de la compétition, l'année ainsi que les catégories de cette compétition (vous pouvez en ajouter avec le bouton + ou les retirer avec le bouton -)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Page Gestion Ajout de Blocs](Ajout-blocs.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Pour l'onglet ajout de bloc, il vous faudra choisir la catégorie pour laquelle vous souhaitez ajouter des blocs, puis colonne de droite comme pour les catégories, vous ajoutez ou retirez les blocs que vous souhaitez (ils peuvent être de forme chiffrée ou par nom)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+##Page des inscriptions :
 
-## Learn More
+![Inscriptions](Inscription.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Vous commencez par choisir la catégorie à laquelle appartient le compétiteur puis entrez son nom, prénom et club
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##Page Juges :
 
-### Code Splitting
+![Page juge](juge.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Cette page est adaptée au format téléphone, car la plupart du temps les juges l'utiliseront pour valider ou non le passage d'un bloc.
+Les juges sélectionnent la catégorie du compétiteur, son nom ainsi que le bloc sur lequel il fait un essai.
 
-### Analyzing the Bundle Size
+##Page Résultats :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Resultats](Results.png)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Cette page présente les résultats de la compétition sous forme de tableau par catégorie. Sont mentionnés la catégorie, le nom et prénom des compétiteurs, le total de blocs réussis et la liste des blocs réussis.
