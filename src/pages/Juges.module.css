@@ -1,0 +1,13 @@
+.box{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.judgeButton{
+    height: 3rem;
+    width: 50%;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 14px;
+}

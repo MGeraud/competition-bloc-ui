@@ -12,7 +12,7 @@ const Welcome = () => {
     }
 
     return (
-        <Fragment className={classNames.displayLinks}>
+        <Fragment >
                 <button className={classNames.button} onClick={() => {goToResults('/resultats')}} type='button'>Résultats</button>
                 <button className={classNames.button} onClick={() => {goToResults('/juges')}} type='button'>Juges</button>
                 <button className={classNames.button} onClick={() => {goToResults('/inscriptions')}} type='button'>Inscritpions</button>

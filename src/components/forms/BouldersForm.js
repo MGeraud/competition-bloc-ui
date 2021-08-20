@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import axios from "axios";
 import {useState} from "react";
 import {Form, Field, Formik, ErrorMessage, FieldArray} from "formik";
+import keycloak from "../../keycloak";
 
 const initialValues = {
     id: '',
@@ -13,9 +14,11 @@ const validationSchema = Yup.object({
     boulders: Yup.string().required('champ requis'),
 })
 
+//configuration des headers pour appel API avec passage de token pour autorisation
 const axiosConfig = {
     headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${keycloak.token}`
     }
 }
 

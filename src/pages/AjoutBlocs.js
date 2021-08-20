@@ -3,19 +3,24 @@ import {useEffect, useState} from "react";
 import {fetchCategories} from "../store/categoriesSlice";
 import axios from "axios";
 import {ErrorMessage, Field, FieldArray, Form, Formik} from "formik";
-import * as Yup from "yup";
 import TextError from "../components/forms/TextError";
+import keycloak from "../keycloak";
+import Card from "../components/UI/Card";
+import classes from '../components/UI/Card.module.css'
+import grid from '../components/forms/CompetitionCreationForm.module.css'
 
 
 const initialValues = {
     id: '',
-    boulders: [''],
+    boulders: [null],
 }
 
 
+//configuration des headers pour appel API avec passage de token pour autorisation
 const axiosConfig = {
     headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${keycloak.token}`
     }
 }
 const AjoutBlocs = () => {
@@ -32,27 +37,10 @@ const AjoutBlocs = () => {
 
 
     return (
-        <>
-
-            <h2>Insérer formulaire ajout blocs</h2>
-            {loadingState === 'Loading ...' && <h3>Chargement en cours</h3>}
-            {loadingState === 'fulfilled' &&
-            <div>
-                <ul>
-                    {categories.map((categorie) => (
-                        <li>{categorie.categoryName}
-                            {categorie.boulders !== null &&
-                            <ul>{categorie.boulders.map((bloc) =>
-                                <li>{bloc}</li>)}
-                            </ul>}
-                        </li>
-                    ))}
-                </ul>
-                <h2>
-                    test :
-                    {categories.map((cat) => (cat.categoryName === "Cadet Garcons" ? cat.id : null))}
-                </h2>
-            </div>}
+        <Card>
+            {succes && <h2 style={{color: 'green'}}>Enregistré</h2>}
+            {failure && <h2 style={{color: 'red'}}>Une erreur a eu lieu, veuillez essayer à nouveau</h2>}
+            <h2>Formulaire d'ajout de blocs</h2>
 
             {loadingState === 'fulfilled' &&
             <Formik
@@ -77,10 +65,12 @@ const AjoutBlocs = () => {
             >
                 {formik => {
                     return (
-                        <Form>
-                            <div>
-                                <label htmlFor='id'>Sélectionner la catégorie à laquelle ajouter les blocs</label>
-                                <Field as='select' id='id' name='id'>
+                        <Form className={grid.container}>
+                            <div className={grid.label1}>
+                                <label htmlFor='id'>Sélectionner la catégorie</label>
+                            </div>
+                            <div className={grid.label2} style={{marginTop: 10}}>
+                                <Field className={classes.field} as='select' id='id' name='id'>
                                     <option>Selectionnez une categorie</option>
                                     {categories.map((categorie) => {
                                         return (
@@ -92,8 +82,8 @@ const AjoutBlocs = () => {
                                 <ErrorMessage name='id' component={TextError}/>
                             </div>
 
-                            <div>
-                                <label>Liste de bloc à ajouter</label>
+                            <div className={grid.categories}>
+                                <label>Ajouter les blocs pour la catégorie</label>
                                 {/*utilisation de FieldArray de formik pour créer directement un array de categories*/}
                                 <FieldArray name='boulders'>
                                     {fieldArrayProps => {
@@ -104,12 +94,12 @@ const AjoutBlocs = () => {
                                             <div>
                                                 {boulders.map((boulder, index) => (
                                                     <div key={index}>
-                                                        <Field name={`boulders[${index}]`}/>
+                                                        <Field className={classes.field} name={`boulders[${index}]`}/>
                                                         {index > 0 && (
-                                                            <button type='button'
+                                                            <button className={classes.miniButton} type='button'
                                                                     onClick={() => remove(index)}>-</button>
                                                         )}
-                                                        <button type='button' onClick={() => push('')}>+</button>
+                                                        <button className={classes.miniButton} type='button' onClick={() => push('')}>+</button>
                                                     </div>
                                                 ))}
                                             </div>
@@ -117,13 +107,15 @@ const AjoutBlocs = () => {
                                     }}
                                 </FieldArray>
                             </div>
-                            <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Envoyer</button>
+                            <button className={grid.submit} type='submit'
+                                    disabled={!formik.isValid || formik.isSubmitting}>Envoyer
+                            </button>
                         </Form>
                     )
                 }}
 
             </Formik>}
-        </>
+        </Card>
     )
 }
 

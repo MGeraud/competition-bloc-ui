@@ -3,6 +3,9 @@ import * as Yup from 'yup';
 import TextError from "./TextError";
 import axios from "axios";
 import {useState} from "react";
+import keycloak from "../../keycloak";
+import classes from '../UI/Card.module.css'
+import grid from './CompetitionCreationForm.module.css'
 
 //valeur par défaut avant complétion du formulaire
 const initalValues = {
@@ -21,11 +24,11 @@ const validationSchema = Yup.object({
         .required('Required'),
 })
 
-//configuration des headers pour appel API
+//configuration des headers pour appel API avec passage de token pour autorisation
 const axiosConfig = {
     headers: {
-
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${keycloak.token}`
     }
 }
 
@@ -35,8 +38,8 @@ const CompetitionCreationForm = () => {
 
     // const dispatch = useDispatch();
     return (<>
-            {succes && <h2 style={{ color: 'green' }}>Enregistré</h2>}
-            {failure && <h2 style={{ color: 'red' }}>Une erreur a eu lieu, veuillez essayer à nouveau</h2>}
+            {succes && <h2 style={{color: 'green'}}>Enregistré</h2>}
+            {failure && <h2 style={{color: 'red'}}>Une erreur a eu lieu, veuillez essayer à nouveau</h2>}
 
             <Formik
                 initialValues={initalValues}
@@ -60,19 +63,20 @@ const CompetitionCreationForm = () => {
             >
                 {formik => {
                     return (
-                        <Form>
-                            <div>
-                                <label htmlFor="competitionName">competitionName</label>
-                                <Field type='text' id="competitionName" name="competitionName"/>
+                        <Form className={grid.container}>
+                            <div className={grid.label1}>
+                                <label htmlFor="competitionName">Nom de la compétition</label>
+                                <Field className={classes.field} type='text' id="competitionName"
+                                       name="competitionName"/>
                                 <ErrorMessage name='competitionName' component={TextError}/>
                             </div>
 
-                            <div>
-                                <label htmlFor="year">competitionName</label>
-                                <Field type='text' id="year" name="year"/>
+                            <div className={grid.label2}>
+                                <label htmlFor="year">Année </label>
+                                <Field className={classes.field} type='text' id="year" name="year"/>
                                 <ErrorMessage name='year' component={TextError}/>
                             </div>
-                            <div>
+                            <div className={grid.categories}>
                                 <label>Liste de catégories</label>
                                 {/*utilisation de FieldArray de formik pour créer directement un array de categories*/}
                                 <FieldArray name='categories'>
@@ -84,12 +88,12 @@ const CompetitionCreationForm = () => {
                                             <div>
                                                 {categories.map((category, index) => (
                                                     <div key={index}>
-                                                        <Field name={`categories[${index}]`}/>
+                                                        <Field className={classes.field} name={`categories[${index}]`}/>
                                                         {index > 0 && (
-                                                            <button type='button'
+                                                            <button className={classes.miniButton} type='button'
                                                                     onClick={() => remove(index)}>-</button>
                                                         )}
-                                                        <button type='button' onClick={() => push('')}>+</button>
+                                                        <button className={classes.miniButton} type='button' onClick={() => push('')}>+</button>
                                                     </div>
                                                 ))}
                                             </div>
@@ -97,7 +101,9 @@ const CompetitionCreationForm = () => {
                                     }}
                                 </FieldArray>
                             </div>
-                            <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Envoyer</button>
+                            <button className={grid.submit} type='submit'
+                                    disabled={!formik.isValid || formik.isSubmitting}>Envoyer
+                            </button>
                         </Form>
                     )
                 }}

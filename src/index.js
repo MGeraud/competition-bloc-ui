@@ -6,13 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./store";
+import {ReactKeycloakProvider} from "@react-keycloak/web";
+import keycloak from "./keycloak";
 
-ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </Provider>,
+
+ReactDOM.render(<ReactKeycloakProvider authClient={keycloak}>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+        </Provider>
+    </ReactKeycloakProvider>,
     document.getElementById('root')
 );
 

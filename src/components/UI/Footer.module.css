@@ -1,0 +1,11 @@
+.body{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button{
+    box-shadow: 0 2px 8px #F68C3E;
+    border-radius: 14px;
+    background-color: #e8ddcf;
+}

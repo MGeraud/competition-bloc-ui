@@ -1,0 +1,27 @@
+.card {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px #F68C3E;
+    border-radius: 14px;
+    background-color: #e8ddcf;
+}
+
+label{
+    color: black;
+    padding: 1rem;
+}
+
+.field{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-color: #F68C3E;
+    border-radius: 14px;
+}
+
+.miniButton{
+    font-weight: bolder;
+    margin-left: 1rem;
+    border-color: #F68C3E;
+    border-radius: 14px;
+}

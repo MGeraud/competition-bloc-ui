@@ -1,11 +1,12 @@
 import CompetitionCreationForm from "../components/forms/CompetitionCreationForm";
+import Card from "../components/UI/Card";
 
 const CreationCompetition = () => {
     return (
-        <>
-            <h2>Insérer formulaire creation competition</h2>
+        <Card>
+            <h2>Formulaire de création de competition</h2>
             <CompetitionCreationForm/>
-        </>
+        </Card>
     )
 }
 export default CreationCompetition;
