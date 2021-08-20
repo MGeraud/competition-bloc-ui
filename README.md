@@ -7,7 +7,7 @@ Elle fait partie du système pour lequel vous trouverez le détail [dans ce repo
 Son utilisation est la suivante :  
 
 
-##Page d'accueil : 
+## Page d'accueil : 
 
 ![Accueil](page-accueil.png)
 
@@ -15,7 +15,7 @@ Les liens Gestion et Inscription demandent une authentification réservée aux g
 Le lien Juges demande une authentification réservée aux juges
 
 
-##Page de Gestion des compétitions (Création de la compétition, de ses catégories et ajout des blocs pour chaque catégorie) :
+## Page de Gestion des compétitions (Création de la compétition, de ses catégories et ajout des blocs pour chaque catégorie) :
 
 ![Page gestion création de compétition](creation.png)
 
@@ -28,20 +28,20 @@ Pour l'onglet "Création Compétition" vous devez rentrer le nom de la compétit
 Pour l'onglet ajout de bloc, il vous faudra choisir la catégorie pour laquelle vous souhaitez ajouter des blocs, puis colonne de droite comme pour les catégories, vous ajoutez ou retirez les blocs que vous souhaitez (ils peuvent être de forme chiffrée ou par nom)
 
 
-##Page des inscriptions :
+## Page des inscriptions :
 
 ![Inscriptions](Inscription.png)
 
 Vous commencez par choisir la catégorie à laquelle appartient le compétiteur puis entrez son nom, prénom et club
 
-##Page Juges :
+## Page Juges :
 
 ![Page juge](juge.png)
 
 Cette page est adaptée au format téléphone, car la plupart du temps les juges l'utiliseront pour valider ou non le passage d'un bloc.
 Les juges sélectionnent la catégorie du compétiteur, son nom ainsi que le bloc sur lequel il fait un essai.
 
-##Page Résultats :
+## Page Résultats :
 
 ![Resultats](Results.png)
 
